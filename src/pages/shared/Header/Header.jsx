@@ -1,6 +1,19 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { authContext } from "../../Provider/AuthProvider";
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 const Header = () => {
+    const { user,logOut} = useContext(authContext);
+    const handleLogOut=()=>{
+        logOut()
+        .then(() => {
+            // Sign-out successful.
+          }).catch((error) => {
+            console.log(error.message);
+          });
+    }
     const navItems = <>
         <li>
             <Link to='/'>Home</Link>
@@ -11,9 +24,12 @@ const Header = () => {
         <li>
             <Link to='/'>Classes</Link>
         </li>
-        <li>
-            <Link to='/'>Dashboard</Link>
-        </li>
+        {
+            user &&
+            <li>
+                <Link to='/'>Dashboard</Link>
+            </li>
+        }
     </>
     return (
         <div className="navbar bg-base-100">
@@ -34,10 +50,20 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to='/login'>
-                    <button className="btn btn-active btn-secondary">Login</button>
+                {
+                    user ?
+                        <div className="flex items-center gap-3">
+                            <img id="title" src={user?.photoURL} className="rounded-full w-12 h-10" alt="" />
+                            <ReactTooltip anchorId="title"place="bottom" content={user?.displayName}></ReactTooltip>
+                            <button onClick={handleLogOut} className="btn btn-active btn-secondary">Logout</button>
+                        </div>
+                        :
+                        <Link to='/login'>
+                            <button className="btn btn-active btn-secondary">Login</button>
 
-                </Link>
+                        </Link>
+                }
+
             </div>
         </div>
     );

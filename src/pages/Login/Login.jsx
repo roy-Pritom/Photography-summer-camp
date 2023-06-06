@@ -1,11 +1,37 @@
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { authContext } from "../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
+    const {logIn}=useContext(authContext);
+    const navigate=useNavigate();
+    const [error,setError]=useState('');
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data);
+        // console.log(data);
+        setError('');
+        logIn(data.email,data.password)
+        .then(result=>{
+            const loggedUser=result.user;
+            console.log(loggedUser);
+ 
+            Swal.fire({
+                title: 'success',
+                text: 'successfully login',
+                icon: 'success',
+                confirmButtonText: 'Cool'
+              })
+              
+            navigate('/')
+        })
+        .catch(error=>{
+            setError(error.message);
+        })
     };
+
+    
 
     return (
         <div className="md:p-10 p-6">
@@ -53,6 +79,9 @@ const Login = () => {
                             <p className='text-center'><small>New to Here? Please <Link to='/register' className='text-orange-600 ml-1'>SignUp</Link></small></p>
 
                         </div>
+                        <div className="p-2">
+                        <p className="text-red-500 text-center">{error}</p>
+                    </div>
                     </div>
                 </div>
             </div>
