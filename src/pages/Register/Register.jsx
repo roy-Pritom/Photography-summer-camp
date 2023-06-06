@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { authContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
+import SocialLogin from "../shared/SocialLogin/SocialLogin";
 
 const Register = () => {
     const {createUser,logOut}=useContext(authContext);
@@ -115,13 +116,7 @@ const Register = () => {
                         </div>
                     </form>
                  
-                        <div className="">
-                            <div className="divider w-full">OR</div>
-
-                           <div className="flex justify-center">
-                           <button className="font-semibold flex justify-center items-center gap-2 text-xl btn btn-outline btn-secondary"> <img src="https://i.ibb.co/3T5SxcN/google.png" style={{ height: "18px" }} alt="" /> Google</button>
-                           </div>
-                        </div>
+                       <SocialLogin></SocialLogin>
             
                     <div className="py-5 px-2">
                     <p  className='text-center'><small>Already have an account? Please <Link to='/login' className='text-orange-600 ml-1'>Login</Link></small></p>

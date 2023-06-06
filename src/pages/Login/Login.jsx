@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "../shared/SocialLogin/SocialLogin";
 
 const Login = () => {
     const {logIn}=useContext(authContext);
@@ -69,13 +70,7 @@ const Login = () => {
                             </div>
                         </form>
                      
-                            <div className="">
-                                <div className="divider w-full">OR</div>
-
-                               <div className="flex justify-center">
-                               <button className="font-semibold flex justify-center items-center gap-2 text-xl btn btn-outline btn-secondary"> <img src="https://i.ibb.co/3T5SxcN/google.png" style={{ height: "18px" }} alt="" /> Google</button>
-                               </div>
-                            </div>
+                          <SocialLogin></SocialLogin>
                 
                         <div className="py-5 px-2">
                             <p className='text-center'><small>New to Here? Please <Link to='/register' className='text-orange-600 ml-1'>SignUp</Link></small></p>
