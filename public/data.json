@@ -1,0 +1,63 @@
+[
+    {
+      "name": "Annie Leibovitz",
+      "image": "https://img.freepik.com/free-photo/front-view-smiley-male-photographer-with-camera_23-2148946289.jpg?w=900&t=st=1686135170~exp=1686135770~hmac=b11148268dbaeabf75564b3c96cacbcb433e1de376f6c4e2d56e9ad642496459",
+      "email": "annie@example.com",
+      "rating": 4.8
+    },
+    {
+      "name": "Steve McCurry",
+      "image": "https://img.freepik.com/premium-photo/teenager-photographer-man-isolated-blue_1368-109925.jpg?size=626&ext=jpg&ga=GA1.2.1665529171.1685608633&semt=ais",
+      "email": "steve@example.com",
+      "rating": 4.7
+    },
+    {
+      "name": "Ansel Adams",
+      "image": "https://img.freepik.com/free-photo/photographer-white-background_1368-3532.jpg?w=740t=st=1686135281~exp=1686135881~hmac=406be919207abddd8a31870293ead2ef42073a705e2f2d1f7a6e3c36301453bd",
+      "email": "ansel@example.com",
+      "rating": 4.9
+    },
+    {
+      "name": "Dorothea Lange",
+      "image": "https://img.freepik.com/free-photo/picture-charming-magnetic-young-female-with-curly-black-hair_176532-7422.jpg?size=626&ext=jpg&ga=GA1.1.1665529171.1685608633&semt=ais",
+      "email": "dorothea@example.com",
+      "rating": 4.5
+    },
+    {
+      "name": "Richard Avedon",
+      "image": "https://img.freepik.com/free-photo/smiling-man-beige-outfit-holding-retro-camera-orange-wall_197531-23340.jpg?size=626&ext=jpg&ga=GA1.2.1665529171.1685608633&semt=ais",
+      "email": "richard@example.com",
+      "rating": 4.6
+    },
+    {
+      "name": "Mary Ellen Mark",
+      "image": "https://img.freepik.com/free-photo/portrait-positive-man-with-retro-camera-standing-isolated_171337-16519.jpg?size=626&ext=jpg&ga=GA1.1.1665529171.1685608633&semt=ais",
+      "email": "mary@example.com",
+      "rating": 4.7
+    },
+    {
+      "name": "Joel Meyerowitz",
+      "image": "https://img.freepik.com/premium-photo/young-passionate-photographer-image-indian-boy_181020-3355.jpg?size=626&ext=jpg&ga=GA1.1.1665529171.1685608633&semt=ais",
+      "email": "joel@example.com",
+      "rating": 4.6
+    },
+    {
+      "name": "Cindy Sherman",
+      "image": "https://img.freepik.com/free-photo/front-view-smiley-male-photographer_23-2148453397.jpg?size=626&ext=jpg&ga=GA1.1.1665529171.1685608633&semt=ais",
+      "email": "cindy@example.com",
+      "rating": 4.8
+    },
+    {
+      "name": "Gregory Alina",
+      "image": "https://img.freepik.com/free-photo/front-view-blonde-lady-with-her-photocamera-her-right-hand_140725-37464.jpg?size=626&ext=jpg&ga=GA1.1.1665529171.1685608633&semt=ais",
+      "email": "gregory@example.com",
+      "rating": 4.7
+    },
+    {
+      "name": "William Eggleston",
+      "image": "https://img.freepik.com/free-photo/gallant-young-brunette-haired-gentleman-plaid-blazer-stylish-shirt-looking-straight-holding-camera_197531-24670.jpg?size=626&ext=jpg&ga=GA1.1.1665529171.1685608633&semt=ais",
+      "email": "william@example.com",
+      "rating": 4.9
+    }
+  ]
+  
