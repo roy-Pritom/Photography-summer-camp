@@ -1,11 +1,11 @@
 import Instructors from "../Instructors/Instructors";
-import Slider from "../Slider/Slider";
+// import Slider from "../Slider/Slider";
 
 
 const Home = () => {
     return (
       <div className="">
-        <Slider></Slider>
+        {/* <Slider></Slider> */}
         <Instructors></Instructors>
       </div>
     );

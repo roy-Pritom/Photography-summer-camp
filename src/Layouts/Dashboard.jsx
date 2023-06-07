@@ -1,8 +1,11 @@
 import { NavLink, Outlet } from "react-router-dom";
 import {  FaHome } from 'react-icons/fa';
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
-  const isAdmin =false;
+  const ob =useAdmin();
+  console.log(ob.admin);
+  const isAdmin=ob.admin
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -19,22 +22,15 @@ const Dashboard = () => {
           {
             isAdmin ? <>
               <li><NavLink to="/"><FaHome></FaHome> Admin Home</NavLink></li>
-
               <li><NavLink to="/dashboard/mageClasses">Manage Classes </NavLink></li>
-              <li><NavLink to="/dashboard/manageitems"> Manage Items</NavLink></li>
+              <li><NavLink to="/dashboard/allUser">Manage Users</NavLink></li>
+   
 
             </> : <>
             <li><NavLink to="/"><FaHome></FaHome> User Home</NavLink></li>
-            <li><NavLink to="/dashboard/allUser">All User</NavLink></li>
               <li><NavLink to="/dashboard/classes">Selected Classes</NavLink></li>
               <li><NavLink to="/">Enrolled Classes</NavLink></li>
               <li><NavLink to="/"> Payment History</NavLink></li>
-              {/* <li>
-
-                                    <span className="badge inl badge-secondary">+{cart?.length || 0}</span>
-                                </NavLink>
-
-                            </li> */}
             </>
           }
           <div className="divider"></div>
