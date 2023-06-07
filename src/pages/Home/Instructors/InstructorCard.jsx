@@ -1,6 +1,6 @@
 
 const InstructorCard = ({instructor}) => {
-    const {name,image,email,rating}=instructor || {};
+    const {name,image,email}=instructor || {};
 
     return (
         <div className="card w-96 glass max-w-sm  overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 element ">
