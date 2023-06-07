@@ -3,11 +3,10 @@ import { useForm } from "react-hook-form";
 import { useContext, useState } from "react";
 import { authContext } from "../Provider/AuthProvider";
 import Swal from "sweetalert2";
-import { updateProfile } from "firebase/auth";
 import SocialLogin from "../shared/SocialLogin/SocialLogin";
 
 const Register = () => {
-    const {createUser,logOut}=useContext(authContext);
+    const {createUser,logOut,updateUserProfile}=useContext(authContext);
    const navigate=useNavigate();
     // const [succes,setSuccess]=useState('');
     const [error,setError]=useState('');
@@ -23,7 +22,22 @@ const Register = () => {
         .then(result=>{
             const loggedUser=result.user;
             console.log(loggedUser);
-            updateUserProfile(loggedUser,data.name,data.photo)
+            updateUserProfile(data.name,data.photo)
+            .then(()=>{
+
+                const savedUser = { name: data.name, email: data.email }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(savedUser)
+                })
+                .then(res=>res.json())
+                .then(data=>console.log(data))
+
+            })
+            
             logOut();
             Swal.fire({
                 title: 'successfully register',
@@ -40,15 +54,15 @@ const Register = () => {
         
     };
 
-    const updateUserProfile=(currentUser,name,photo)=>{
-        updateProfile(currentUser, {
-            displayName: name, photoURL:photo
-          }).then(() => {
-            // Profile updated!
-          }).catch((error) => {
-            console.log(error.message);
-          });
-    }
+    // const updateUserProfile=(currentUser,name,photo)=>{
+    //     updateProfile(currentUser, {
+    //         displayName: name, photoURL:photo
+    //       }).then(() => {
+    //         // Profile updated!
+    //       }).catch((error) => {
+    //         console.log(error.message);
+    //       });
+    // }
 
     return (
         <div className="md:p-10 p-6">

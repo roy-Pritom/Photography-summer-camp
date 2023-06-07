@@ -6,7 +6,7 @@ const InstructorPage = () => {
 
     return (
         <div className="mb-20">
-            <h2 className="text-5xl font-bold text-center mt-8 mb-10">Our Instructors</h2>
+            <h2 className="text-5xl font-bold text-center mt-8 mb-14">Our Instructors</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
                 {
