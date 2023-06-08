@@ -11,6 +11,7 @@ const Dashboard = () => {
   // console.log(object.admin);
   // const isAdmin = object.admin;
   const isAdmin=useAdmin();
+  // console.log(isAdmin);
   // const object1 = useInstructor();
 
   // const isInstructor =object1.instructor;
