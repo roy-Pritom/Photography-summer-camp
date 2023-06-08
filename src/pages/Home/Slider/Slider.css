@@ -34,20 +34,6 @@
   }
   
 
-  @keyframes colorAnimation {
-    0% {
-      background-color:gray;
-    }
-    50% {
-      background-color:white;
-    }
-    100% {
-      background-color:gray;
-    }
-  }
-  
-  .element {
-    animation-name: colorAnimation;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;
+  .drawer-side a.active {
+    color:white;
   }

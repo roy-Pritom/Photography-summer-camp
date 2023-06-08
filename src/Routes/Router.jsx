@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import AllUser from "../pages/Dashboard/AllUser/AllUser";
 import AddClass from "../pages/Dashboard/AddClass/Addclass";
 import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
+import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
 
 
   const router = createBrowserRouter([
@@ -56,6 +57,11 @@ import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
         {
           path:'myClasses',
           element:<MyClasses></MyClasses>
+        },
+        {
+          path:'manageClasses',
+          element:<ManageClasses></ManageClasses>,
+          loader:()=>fetch('http://localhost:5000/classes')
         }
       ]
     }
