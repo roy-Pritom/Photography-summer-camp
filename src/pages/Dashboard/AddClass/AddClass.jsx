@@ -1,11 +1,35 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { authContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddClass = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
+  const onSubmit = data =>{
+   console.log(data);
+  fetch('http://localhost:5000/classes',{
+    method:'POST',
+    headers:{
+        'content-type':'application/json'
+    },
+    body:JSON.stringify(data)
+  })
+  .then(res=>res.json())
+  .then(info=>{
+    if(info.insertedId)
+    {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Class added successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+    }
+  })
 
+  }
+         
 
   const {user}=useContext(authContext);
     return (
@@ -55,6 +79,14 @@ const AddClass = () => {
           </label>
           <input  type="number" placeholder="Available Seats" {...register("seats", { required: true })}  className="input input-bordered w-full" />
           {errors.seats?.type === 'required' && <p className="text-red-400">seats is required</p>}
+
+        </div>
+        <div className="form-control hidden">
+          <label className="label">
+            <span className="label-text">status</span>
+          </label>
+          <input  type="text" defaultValue={'pending'}   {...register("status", { required: true })}  className="input input-bordered w-full" />
+        
 
         </div>
         <div className="form-control">
