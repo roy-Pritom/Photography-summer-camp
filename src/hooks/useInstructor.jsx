@@ -22,7 +22,7 @@ const useInstructor = () => {
     //     .then(res=>res.json())
     //     .then(data=>setInstructor(data))
     //  },[user?.email])
-     console.log(isInstructor);
+    //  console.log(isInstructor);
      return isInstructor?.instructor;
 };
 

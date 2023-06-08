@@ -41,7 +41,8 @@ const Dashboard = () => {
           }
           {
             isInstructor && <>
-              <li><NavLink to="/dashboard/allUser">lol</NavLink></li>
+              <li><NavLink to="/dashboard/addClass">Add a Class</NavLink></li>
+              <li><NavLink to="/dashboard/myClasses">My classes</NavLink></li>
 
             </>
 
