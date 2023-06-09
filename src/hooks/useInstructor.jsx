@@ -6,11 +6,15 @@ import axios from "axios";
 const useInstructor = () => {
      const {user}=useContext(authContext);
 
-
+const token=localStorage.getItem('token')
      const {data:isInstructor}=useQuery({
         queryKey:['isInstructor',user?.email],
         queryFn:async()=>{
-            const res= await axios.get(`http://localhost:5000/users/instructor/${user?.email}`);
+            const res= await axios.get(`http://localhost:5000/users/instructor/${user?.email}`,{
+                headers:{
+                    authorization:`bearer ${token}`
+                }
+            });
             return res.data
         }
     })

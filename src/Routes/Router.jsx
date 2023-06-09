@@ -36,13 +36,11 @@ import AllClassPage from "../pages/AllClassPage/AllClassPage";
         },
         {
           path:"/instructors",
-          element:<InstructorPage></InstructorPage>,
-          loader:()=>fetch('http://localhost:5000/instructors')
+          element:<InstructorPage></InstructorPage>
         },
         {
           path:'/classes',
-          element:<AllClassPage></AllClassPage>,
-          loader:()=>fetch('http://localhost:5000/classes')
+          element:<AllClassPage></AllClassPage>
         }
         
       ]
@@ -66,8 +64,7 @@ import AllClassPage from "../pages/AllClassPage/AllClassPage";
         },
         {
           path:'manageClasses',
-          element:<ManageClasses></ManageClasses>,
-          loader:()=>fetch('http://localhost:5000/classes')
+          element:<ManageClasses></ManageClasses>
         }
       ]
     }

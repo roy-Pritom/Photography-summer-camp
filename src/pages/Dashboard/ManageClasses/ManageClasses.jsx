@@ -1,10 +1,20 @@
-import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 const ManageClasses = () => {
-   const classes=useLoaderData();
-   const [disable,setDisable]=useState(false);
+//    const classes=useLoaderData();
+   const [classes,setClasses]=useState([]);
+
+   useEffect(()=>{
+    fetch('http://localhost:5000/classes')
+    .then(res=>res.json())
+    .then(data=>setClasses(data))
+   },[])
+ 
+
+
+
 
 
    const handleStatus=(item,isApprove)=>{
@@ -33,7 +43,7 @@ const ManageClasses = () => {
                     })
                 }
             })
-    setDisable(true)
+  
 
   }
   else
@@ -63,7 +73,7 @@ const ManageClasses = () => {
             })
 
 
-    setDisable(true)
+
 
 
   }
@@ -121,11 +131,11 @@ const ManageClasses = () => {
         <td>{item?.status}</td>
 
         <td>
-        <button disabled={disable} onClick={()=>handleStatus(item,true)} className="btn btn-outline btn-xs btn-secondary">Approve</button>
+        <button disabled={`${item?.status==='approved' || item?.status==='denied'?true:''}`} onClick={()=>handleStatus(item,true)} className="btn btn-outline btn-xs btn-secondary">Approve</button>
 
         </td>
         <td>
-        <button disabled={disable} onClick={()=>handleStatus(item,false)} className="btn btn-outline btn-xs btn-secondary">Deny</button>
+        <button disabled={`${item?.status==='approved' || item?.status==='denied'?true:''}`} onClick={()=>handleStatus(item,false)} className="btn btn-outline btn-xs btn-secondary">Deny</button>
 
         </td>
         <td>

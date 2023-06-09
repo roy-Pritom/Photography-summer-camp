@@ -1,12 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import { FaTrashAlt, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 const AllUser = () => {
-    const [disable,setDisable]=useState(false)
+    const token=localStorage.getItem('token');
+
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch('http://localhost:5000/users')
+        const res = await fetch('http://localhost:5000/users',{
+            headers:{
+                authorization:`bearer ${token}`
+              }
+        })
         return res.json()
     })
 
@@ -19,7 +23,7 @@ const AllUser = () => {
                 console.log(data)
                 if (data.modifiedCount) {
                     refetch();
-                    setDisable(true)
+            
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -75,7 +79,7 @@ const AllUser = () => {
                     </thead>
                     <tbody>
                         {
-                            users.map((user, index) => <tr key={user._id}>
+                            users?.map((user, index) => <tr key={user._id}>
                                 <th>{index + 1}</th>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
@@ -89,10 +93,11 @@ const AllUser = () => {
                                   
                                                                </td>
                                 <td>
-                                    <button  onClick={() => handleMakeAdmin(user)} className="btn btn-ghost bg-orange-600  text-white"><FaUserShield></FaUserShield></button>
+                
+                                    <button  onClick={() => handleMakeAdmin(user)} className='btn btn-ghost bg-orange-600  text-white'disabled={`${user?.role === 'admin'?true:''}`}  ><FaUserShield></FaUserShield></button>
                                 </td>
                                 <td>
-                                    <button  onClick={() => handleMakeInstructor(user)} className="btn btn-ghost bg-orange-600  text-white"><FaUserShield></FaUserShield></button>
+                                    <button  onClick={() => handleMakeInstructor(user)} className="btn btn-ghost bg-orange-600  text-white"disabled={`${user?.role === 'instructor'?true:''}`} ><FaUserShield></FaUserShield></button>
                                 </td>
                                 <td><button onClick={() => handleDelete(user)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button></td>
                             </tr>)
