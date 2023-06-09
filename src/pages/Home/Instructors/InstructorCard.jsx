@@ -3,7 +3,7 @@ const InstructorCard = ({instructor}) => {
     const {name,image,email}=instructor || {};
 
     return (
-        <div className="card w-96 glass max-w-sm  overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 element ">
+        <div className="card w-[320px] ml-6 md:ml-0  md:w-96 glass  overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 element ">
             <figure className="bg-secondary opacity-90 rounded-l-box border-b-8"><img src={image} className="w-[110px] h-[100px] rounded-full mx-auto my-12 border-2 border-white
               " alt="car!" /></figure>
             <div className="card-body">

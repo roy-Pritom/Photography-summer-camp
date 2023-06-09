@@ -4,11 +4,16 @@ import { authContext } from "../../Provider/AuthProvider";
 const MyClasses = () => {
     const {user}=useContext(authContext);
     const [classes,setClasses]=useState([]);
+    const token=localStorage.getItem('token');
     useEffect(()=>{
-        fetch(`http://localhost:5000/classes/${user?.email}`)
+        fetch(`http://localhost:5000/classes/${user?.email}`,{
+          headers:{
+            authorization:`bearer ${token}`
+          }
+    })
         .then(res=>res.json())
         .then(data=>setClasses(data))
-    },[user?.email])
+    },[user?.email,token])
 
 
     return (

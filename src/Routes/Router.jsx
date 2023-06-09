@@ -13,6 +13,7 @@ import AllUser from "../pages/Dashboard/AllUser/AllUser";
 import AddClass from "../pages/Dashboard/AddClass/Addclass";
 import MyClasses from "../pages/Dashboard/MyClasses/MyClasses";
 import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
+import AllClassPage from "../pages/AllClassPage/AllClassPage";
 
 
   const router = createBrowserRouter([
@@ -37,6 +38,11 @@ import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
           path:"/instructors",
           element:<InstructorPage></InstructorPage>,
           loader:()=>fetch('http://localhost:5000/instructors')
+        },
+        {
+          path:'/classes',
+          element:<AllClassPage></AllClassPage>,
+          loader:()=>fetch('http://localhost:5000/classes')
         }
         
       ]

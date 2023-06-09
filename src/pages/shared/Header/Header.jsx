@@ -22,7 +22,7 @@ const Header = () => {
             <Link to='/instructors'>Instructors</Link>
         </li>
         <li>
-            <Link to='/'>Classes</Link>
+            <Link to='/classes'>Classes</Link>
         </li>
         {
             user &&
@@ -32,7 +32,7 @@ const Header = () => {
         }
     </>
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-pink-200 fixed z-10 max-w-screen-xl mx-auto">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
