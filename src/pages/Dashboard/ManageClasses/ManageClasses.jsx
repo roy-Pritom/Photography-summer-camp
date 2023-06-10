@@ -1,17 +1,21 @@
 // import { useLoaderData } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 
 const ManageClasses = () => {
 //    const classes=useLoaderData();
-   const [classes,setClasses]=useState([]);
+//    const [classes,setClasses]=useState([]);
 
-   useEffect(()=>{
-    fetch('http://localhost:5000/classes')
-    .then(res=>res.json())
-    .then(data=>setClasses(data))
-   },[])
+//    useEffect(()=>{
+//     fetch('http://localhost:5000/classes')
+//     .then(res=>res.json())
+//     .then(data=>setClasses(data))
+//    },[])
  
+   const { data: classes = [], refetch } = useQuery(['users'], async () => {
+    const res = await fetch(`http://localhost:5000/classes/${true}`)
+    return res.json()
+})
 
 
 
@@ -20,7 +24,6 @@ const ManageClasses = () => {
    const handleStatus=(item,isApprove)=>{
   if(isApprove)
   {
-    item.status='approved'
     const info={i:true}
     fetch(`http://localhost:5000/classes/${item._id}`, {
             method: 'PATCH',
@@ -33,6 +36,7 @@ const ManageClasses = () => {
             .then(data => {
                 console.log(data)
                 if (data.modifiedCount) {
+                    refetch();
                   
                     Swal.fire({
                         position: 'top-end',
@@ -48,7 +52,6 @@ const ManageClasses = () => {
   }
   else
   {
-    item.status='denied'
     const info={i:false}
     fetch(`http://localhost:5000/classes/${item._id}`, {
             method: 'PATCH',
@@ -61,7 +64,7 @@ const ManageClasses = () => {
             .then(data => {
                 console.log(data)
                 if (data.modifiedCount) {
-                  
+                  refetch();
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -128,7 +131,7 @@ const ManageClasses = () => {
         <td>{item.seats}</td>
         <td>${item.price}</td>
       
-        <td>{item?.status}</td>
+        <td>{item.status}</td>
 
         <td>
         <button disabled={`${item?.status==='approved' || item?.status==='denied'?true:''}`} onClick={()=>handleStatus(item,true)} className="btn btn-outline btn-xs btn-secondary">Approve</button>

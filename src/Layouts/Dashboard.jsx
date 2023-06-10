@@ -1,20 +1,12 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaHome } from 'react-icons/fa';
 import useAdmin from "../hooks/useAdmin";
-// import { useContext } from "react";
-// import { authContext } from "../pages/Provider/AuthProvider";
 import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
-  // const { user } = useContext(authContext);
-  // const object = useAdmin();
-  // console.log(object.admin);
-  // const isAdmin = object.admin;
-  const isAdmin=useAdmin();
-  // console.log(isAdmin);
-  // const object1 = useInstructor();
 
-  // const isInstructor =object1.instructor;
+  const isAdmin=useAdmin();
+
   const isInstructor=useInstructor()
   return (
     <div className="drawer lg:drawer-open bg-purple-200">
@@ -55,7 +47,7 @@ const Dashboard = () => {
             :
             <>
             <li><NavLink to="/"><FaHome></FaHome> User Home</NavLink></li>
-            <li><NavLink to="/dashboard/classes">Selected Classes</NavLink></li>
+            <li><NavLink to="/dashboard/selectedClasses">Selected Classes</NavLink></li>
             <li><NavLink to="/">Enrolled Classes</NavLink></li>
             <li><NavLink to="/"> Payment History</NavLink></li>
             </>
