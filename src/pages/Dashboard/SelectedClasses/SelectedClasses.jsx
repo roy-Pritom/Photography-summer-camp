@@ -65,6 +65,7 @@ const SelectedClasses = () => {
                             <th>Name</th>
                             <th>instructorName</th>
                             <th>Price</th>
+                            <th>Id</th>
                             <th>Pay</th>
                             <th>Delete</th>
                         </tr>
@@ -92,9 +93,11 @@ const SelectedClasses = () => {
 
                                 <td>{item.instructorName}</td>
                                 <td>${item.price}</td>
+                                <td>${item._id}</td>
 
                                 <td>
-                                    <Link to='/dashboard/payment'>
+                                    
+                                    <Link to={`/dashboard/payment/${item._id}`}>
                                         <button className="btn btn-outline btn-sm btn-secondary">Pay</button>
 
                                     </Link>

@@ -74,8 +74,9 @@ import Payment from "../pages/Dashboard/Payment/Payment";
           element:<SelectedClasses></SelectedClasses>
         },
         {
-          path:'payment',
-          element:<Payment></Payment>
+          path:'payment/:id',
+          element:<Payment></Payment>,
+          loader:({params})=>fetch(`http://localhost:5000/carts/${params.id}`)
         }
       ]
     }
