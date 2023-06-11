@@ -14,7 +14,7 @@ const ClassCard = ({item}) => {
     const {classImg,instructorName,className,price,seats}=item;
     const handleAddToCart=(item)=>{
       console.log(item);
-      const orderData={name:item.className,image:item.classImg,instructorName:item.instructorName,email:user?.email,price:item.price}
+      const orderData={name:item.className,image:item.classImg,instructorName:item.instructorName,email:user?.email,price:item.price,seats:item.seats}
       if(user)
       {
          fetch('http://localhost:5000/carts',{
