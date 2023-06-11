@@ -4,34 +4,34 @@ import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 // import  './CheckoutForm.css'
-const CheckoutForm = ({data}) => {
-    const {price,name,image}=data || {};
+const CheckoutForm = ({ data, selectedClasses, id }) => {
+    const { price, name, image, seats, classId, enrolledStudents } = data || {};
     const [cardError, setCardError] = useState('');
-    const{user}=useContext(authContext)
+    const { user } = useContext(authContext)
     const [clientSecret, setClientSecret] = useState('');
-    const[transactionId,setTransactionId]=useState('');
+    const [transactionId, setTransactionId] = useState('');
     const stripe = useStripe();
     const elements = useElements();
     const token = localStorage.getItem('token');
-    const [processing,setProcessing]=useState(false)
-   
-    useEffect(()=>{
-        if(price>0){
-            axios.post('http://localhost:5000/create-payment-intent',{price}, {
-            headers: {
-                authorization: `bearer ${token}`
-            }
-        })
-        .then(res=>{
-            console.log(res.data.clientSecret)
-            setClientSecret(res.data.clientSecret)
-        })
+    const [processing, setProcessing] = useState(false)
+
+    useEffect(() => {
+        if (price > 0) {
+            axios.post('http://localhost:5000/create-payment-intent', { price }, {
+                headers: {
+                    authorization: `bearer ${token}`
+                }
+            })
+                .then(res => {
+                    console.log(res.data.clientSecret)
+                    setClientSecret(res.data.clientSecret)
+                })
         }
-    },[price,token])
+    }, [price, token])
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        
+
         if (!stripe || !elements) {
             return
         }
@@ -57,7 +57,7 @@ const CheckoutForm = ({data}) => {
 
         setProcessing(true)
 
-        
+
         const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
             clientSecret,
             {
@@ -71,71 +71,82 @@ const CheckoutForm = ({data}) => {
             },
         );
 
-        
+
         if (confirmError) {
             console.log(confirmError);
         }
         console.log(paymentIntent)
         setProcessing(false)
-        if(paymentIntent.status==='succeeded'){
+        if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id)
-            
-          
-            const payment={
-                email:user?.email,
-                transactionId:paymentIntent.id,
+
+
+            const payment = {
+                email: user?.email,
+                transactionId: paymentIntent.id,
                 name,
                 image,
                 price,
-                
+                seats,
+                enrolledStudents,
+                cartItems: selectedClasses.find(item => item._id === id),
+                classId
+
+
+
             }
-            axios.post('http://localhost:5000/payments',payment,{
+
+            axios.post('http://localhost:5000/payments', payment, {
                 headers: {
                     authorization: `bearer ${token}`
                 }
             })
-            .then(data=>{
-                console.log(data)
-                if(data.data.insertResult.insertedId){
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Your work has been saved',
-                        showConfirmButton: false,
-                        timer: 1500
-                      })
-                }
-            })
+                .then(data => {
+                    console.log(data)
+                    if (data.data.insertResult.insertedId) {
+
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'successfully payment',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                    }
+                })
         }
 
     }
 
     return (
-       <div className="w-full">
-         <form onSubmit={handleSubmit}>
-            <CardElement
-                options={{
-                    style: {
-                        base: {
-                            fontSize: '16px',
-                            color: '#424770',
-                            '::placeholder': {
-                                color: '#aab7c4',
+        <div className="w-full">
+            <form onSubmit={handleSubmit}>
+                <CardElement
+                    options={{
+                        style: {
+                            base: {
+                                fontSize: '16px',
+                                color: '#424770',
+                                '::placeholder': {
+                                    color: '#aab7c4',
+                                },
+                            },
+                            invalid: {
+                                color: '#9e2146',
                             },
                         },
-                        invalid: {
-                            color: '#9e2146',
-                        },
-                    },
-                }}
-            />
-            <button className=" btn primary" type="submit" disabled={!stripe || !clientSecret || processing}>
-                Pay
-            </button>
-        </form>
-        {cardError && <p className="text-red-600 ml-8">{cardError}</p>}
-        {transactionId&&<p className="text-green-500">Payment success  transactionId:{transactionId}</p>}
-       </div>
+                    }}
+                />
+                <button
+                    disabled={!stripe || !clientSecret || processing}
+
+                    className=" btn primary" type="submit" >
+                    Pay
+                </button>
+            </form>
+            {cardError && <p className="text-red-600 ml-8">{cardError}</p>}
+            {transactionId && <p className="text-green-500">Payment success  transactionId:{transactionId}</p>}
+        </div>
     );
 };
 

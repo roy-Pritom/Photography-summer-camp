@@ -5,7 +5,7 @@ const TopClasses = () => {
     const [classes,setClasses]=useState([]);
     const token=localStorage.getItem('token');
 useEffect(()=>{
-    fetch('http://localhost:5000/classes')
+    fetch('http://localhost:5000/classes/true')
     .then(res=>res.json())
     .then(data=>{
         const kl=data.slice(0,6)

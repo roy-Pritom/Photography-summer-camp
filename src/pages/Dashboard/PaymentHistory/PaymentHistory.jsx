@@ -1,10 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
+import { authContext } from "../../Provider/AuthProvider";
 
 const PaymentHistory = () => {
+    const {user}=useContext(authContext);
 
     const token = localStorage.getItem('token');
     const { data: payments = [] } = useQuery(['users'], async () => {
-        const res = await fetch('http://localhost:5000/payments', {
+        const res = await fetch(`http://localhost:5000/payments/${user?.email}`, {
             headers: {
                 authorization: `bearer ${token}`
             }

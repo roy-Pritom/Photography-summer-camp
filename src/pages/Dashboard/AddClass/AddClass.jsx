@@ -89,6 +89,14 @@ const AddClass = () => {
         
 
         </div>
+        <div className="form-control hidden">
+          <label className="label">
+            <span className="label-text">Enrolled Students</span>
+          </label>
+          <input  type="text" defaultValue={'0'}   {...register("totalEnrolledStudents", { required: true })}  className="input input-bordered w-full" />
+        
+
+        </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Price</span>

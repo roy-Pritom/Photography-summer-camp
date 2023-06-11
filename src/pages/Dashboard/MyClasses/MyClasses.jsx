@@ -17,11 +17,11 @@ const MyClasses = () => {
 
 
     return (
-        <div>
+        <div className="w-full">
             
 
             <div className="overflow-x-auto">
-  <table className="table">
+  <table className="table table-zebra w-full">
     {/* head */}
     <thead>
       <tr>

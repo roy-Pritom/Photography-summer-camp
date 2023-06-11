@@ -1,10 +1,25 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { authContext } from "../../Provider/AuthProvider";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
 const Header = () => {
+    const[theme,setTheme]=useState(localStorage.getItem('theme')?localStorage.getItem('theme'):'light');
+
+    useEffect(()=>{
+        localStorage.setItem('theme',theme);
+        const allTheme=localStorage.getItem('theme');
+        document.querySelector('html').setAttribute('data-theme',allTheme);
+    },[theme])
+    const themehandle=n=>{
+        if(n.target.checked){
+            setTheme('dark')
+        }
+        else{
+            setTheme('light')
+        }
+    }
     const { user,logOut} = useContext(authContext);
     const handleLogOut=()=>{
         logOut()
@@ -30,6 +45,11 @@ const Header = () => {
                 <Link to='/dashboard'>Dashboard</Link>
             </li>
         }
+        <li>
+            <input onClick={themehandle}type='checkbox' className="toggle toggle-md text-white"
+            checked={theme==='light' ? false:true}/>
+        </li>
+
     </>
     return (
         <div className="navbar bg-pink-200 fixed z-10 max-w-screen-xl mx-auto">

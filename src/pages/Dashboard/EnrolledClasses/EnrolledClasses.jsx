@@ -1,9 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
+import { useContext } from "react";
+import { authContext } from "../../Provider/AuthProvider";
 
 const EnrolledClasses = () => {
+    const {user}=useContext(authContext);
     const token = localStorage.getItem('token');
     const { data: classes = [] } = useQuery(['users'], async () => {
-        const res = await fetch('http://localhost:5000/payments', {
+        const res = await fetch(`http://localhost:5000/payments/${user?.email}`, {
             headers: {
                 authorization: `bearer ${token}`
             }
@@ -24,6 +27,7 @@ const EnrolledClasses = () => {
                             <th>Image</th>
                             <th>Class Name</th>
                             <th>User Email</th>
+                       
                             <th>Price</th>
 
                         </tr>
@@ -43,6 +47,7 @@ const EnrolledClasses = () => {
                                 </td>
                                 <td>{item.name}</td>
                                 <td>{item.email}</td>
+                            
                                 <td>${item.price}</td>
 
                             </tr>)

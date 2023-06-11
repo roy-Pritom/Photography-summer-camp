@@ -4,6 +4,7 @@ import { useContext } from "react";
 import Swal from "sweetalert2";
 import { authContext } from "../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
+import { FaTrashAlt } from "react-icons/fa";
 
 const SelectedClasses = () => {
     const { user } = useContext(authContext);
@@ -50,12 +51,12 @@ const SelectedClasses = () => {
 
     }
     return (
-        <div>
+        <div className="w-full">
 
 
             <div className="overflow-x-auto">
-                <table className="table">
-                    {/* head */}
+                <table className="table table-zebra w-full">
+
                     <thead>
                         <tr>
                             <th>
@@ -65,7 +66,8 @@ const SelectedClasses = () => {
                             <th>Name</th>
                             <th>instructorName</th>
                             <th>Price</th>
-                            <th>Id</th>
+                            <th>Seats</th>
+                            <th>enrllrd</th>
                             <th>Pay</th>
                             <th>Delete</th>
                         </tr>
@@ -93,17 +95,19 @@ const SelectedClasses = () => {
 
                                 <td>{item.instructorName}</td>
                                 <td>${item.price}</td>
-                                <td>${item._id}</td>
+                                <td>{item.seats}</td>
+                                <td>{item.totalEnrolledStudents}</td>
 
                                 <td>
-                                    
+
                                     <Link to={`/dashboard/payment/${item._id}`}>
                                         <button className="btn btn-outline btn-sm btn-secondary">Pay</button>
 
                                     </Link>
                                 </td>
                                 <td>
-                                    <button onClick={() => handleDelete(item._id)} className="btn btn-outline btn-sm btn-secondary">Delete</button>
+                                    {/* <button onClick={() => handleDelete(item._id)} className="btn btn-outline btn-sm btn-secondary">Delete</button> */}
+                                    <button onClick={() => handleDelete(item._id)} className="btn btn-outline btn-secondary  text-white"><FaTrashAlt></FaTrashAlt></button>
 
                                 </td>
 

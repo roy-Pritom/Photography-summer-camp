@@ -1,9 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
+// import { useContext } from "react";
 import { FaTrashAlt, FaUserShield } from "react-icons/fa";
 import Swal from "sweetalert2";
+// import { authContext } from "../../Provider/AuthProvider";
 
 const AllUser = () => {
+    // const {user}=useContext(authContext)
     const token=localStorage.getItem('token');
+    // console.log(user);
 
     const { data: users = [], refetch } = useQuery(['users'], async () => {
         const res = await fetch('http://localhost:5000/users',{

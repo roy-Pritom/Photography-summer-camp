@@ -4,22 +4,22 @@ const Footer = () => {
         <div className="p-10 bg-neutral">
           <footer className="footer  text-neutral-content">
             <div>
-            <img className="h-16 w-20 rounded-lg" src="https://img.freepik.com/free-vector/sticker-template-with-car-many-balloons_1308-61699.jpg?w=740&t=st=1684649198~exp=1684649798~hmac=196b1b02179d431fbdc5e61a42e3bab87a503088721638fe4f1d47fd9dc0741d" alt="" />
-                <p>ToySpeedy.com<br />Providing reliable tech since 1992</p>
+            <img className="h-16 w-20 rounded-lg" src="https://img.freepik.com/premium-photo/neon-camera-with-word-camera-it_865340-169.jpg?size=626&ext=jpg" alt="" />
+                <p>LensCraft<br /> Capturing Moments that Last Forever</p>
             </div>
             <div>
                 <span className="footer-title">Address</span>
-                <a className="link link-hover">ToySpeedy</a>
-                <a className="link link-hover">Mirpur 14</a>
-                <a className="link link-hover">Dhaka</a>
-                <a className="link link-hover">Bangladesh</a>
+                <a className="link link-hover">LensCraft</a>
+                <a className="link link-hover">4904 Williams Lane</a>
+                <a className="link link-hover">Wichita</a>
+                <a className="link link-hover">United States</a>
             </div>
             <div>
                 <span className="footer-title">Contact Us</span>
-                <a className="link link-hover">Mirpur 14</a>
-                <a className="link link-hover">Dhaka, Bangladesh</a>
-                <a className="link link-hover">Phone: 0171111111</a>
-                <a className="link link-hover">Email: toyspeedy@gmail.com</a>
+                <a className="link link-hover">4904 Williams Lane</a>
+                <a className="link link-hover">Wichita, United States</a>
+                <a className="link link-hover">Phone: 316-665-8582</a>
+                <a className="link link-hover">Email: lenscraft@gmail.com</a>
             </div>
             <div>
                 <span className="footer-title">Legal</span>
@@ -39,7 +39,7 @@ const Footer = () => {
             </div>
         </footer>
         <hr className="border-gray-500 mb-4" />
-            <p className="text-center text-white">&copy; {new Date().getFullYear()} ToySpeedy. All rights reserved.</p>
+            <p className="text-center text-white">&copy; {new Date().getFullYear()} LensCraft. All rights reserved.</p>
       </div>
     );
 };

@@ -4,8 +4,8 @@ import './Slider.css'
 const Slider = () => {
     return (
         <Carousel
-            // autoPlay={true}
-            // interval={3000}
+            autoPlay={true}
+            interval={3000}
             infiniteLoop={true}
             showStatus={false}
             showThumbs={false}

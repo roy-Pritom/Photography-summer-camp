@@ -1,16 +1,8 @@
-// import { useLoaderData } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Swal from "sweetalert2";
 
 const ManageClasses = () => {
-//    const classes=useLoaderData();
-//    const [classes,setClasses]=useState([]);
 
-//    useEffect(()=>{
-//     fetch('http://localhost:5000/classes')
-//     .then(res=>res.json())
-//     .then(data=>setClasses(data))
-//    },[])
  
    const { data: classes = [], refetch } = useQuery(['users'], async () => {
     const res = await fetch(`http://localhost:5000/classes/${true}`)
@@ -83,11 +75,11 @@ const ManageClasses = () => {
    }
 
     return (
-        <div>
+        <div className="w-full">
             
 
         <div className="overflow-x-auto">
-<table className="table">
+<table className="table table-zebra w-full">
 {/* head */}
 <thead>
   <tr>
