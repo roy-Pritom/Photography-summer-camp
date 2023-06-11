@@ -4,7 +4,8 @@ import { useContext, useEffect, useState } from "react";
 import { authContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 // import  './CheckoutForm.css'
-const CheckoutForm = ({price}) => {
+const CheckoutForm = ({data}) => {
+    const {price,name,image}=data || {};
     const [cardError, setCardError] = useState('');
     const{user}=useContext(authContext)
     const [clientSecret, setClientSecret] = useState('');
@@ -15,7 +16,6 @@ const CheckoutForm = ({price}) => {
     const [processing,setProcessing]=useState(false)
    
     useEffect(()=>{
-        console.log(price)
         if(price>0){
             axios.post('http://localhost:5000/create-payment-intent',{price}, {
             headers: {
@@ -53,7 +53,6 @@ const CheckoutForm = ({price}) => {
         }
         else {
             setCardError('');
-            // console.log('payment method', paymentMethod)
         }
 
         setProcessing(true)
@@ -81,11 +80,14 @@ const CheckoutForm = ({price}) => {
         if(paymentIntent.status==='succeeded'){
             setTransactionId(paymentIntent.id)
             
-            // todo next step
+          
             const payment={
                 email:user?.email,
                 transactionId:paymentIntent.id,
-                price
+                name,
+                image,
+                price,
+                
             }
             axios.post('http://localhost:5000/payments',payment,{
                 headers: {

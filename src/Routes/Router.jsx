@@ -16,6 +16,7 @@ import ManageClasses from "../pages/Dashboard/ManageClasses/ManageClasses";
 import AllClassPage from "../pages/AllClassPage/AllClassPage";
 import SelectedClasses from "../pages/Dashboard/SelectedClasses/SelectedClasses";
 import Payment from "../pages/Dashboard/Payment/Payment";
+import EnrolledClasses from "../pages/Dashboard/EnrolledClasses/EnrolledClasses";
 
 
   const router = createBrowserRouter([
@@ -77,6 +78,10 @@ import Payment from "../pages/Dashboard/Payment/Payment";
           path:'payment/:id',
           element:<Payment></Payment>,
           loader:({params})=>fetch(`http://localhost:5000/carts/${params.id}`)
+        },
+        {
+          path:'enrolledClasses',
+          element:<EnrolledClasses></EnrolledClasses>
         }
       ]
     }

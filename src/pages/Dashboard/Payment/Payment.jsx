@@ -9,7 +9,7 @@ const Payment = () => {
    
     const data=useLoaderData();
     // console.log(data.price);
-    const price=data.price;
+    
 
     const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_PK);
     console.log(stripePromise)
@@ -19,7 +19,7 @@ const Payment = () => {
        
             <h2>payment taka</h2>
             <Elements stripe={stripePromise}>
-            <CheckoutForm price={price}></CheckoutForm>
+            <CheckoutForm data={data}></CheckoutForm>
                 
             </Elements>
         </div>
