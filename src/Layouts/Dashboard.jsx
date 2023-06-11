@@ -41,10 +41,8 @@ const Dashboard = () => {
 
           }
           {
-            isAdmin  || isInstructor ?
-            <>
-            </>
-            :
+            isAdmin!==true  && isInstructor!==true
+            &&
             <>
             <li><NavLink to="/"><FaHome></FaHome> User Home</NavLink></li>
             <li><NavLink to="/dashboard/selectedClasses">Selected Classes</NavLink></li>

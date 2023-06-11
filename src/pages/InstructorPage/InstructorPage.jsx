@@ -1,14 +1,27 @@
 import { Fade } from "react-awesome-reveal";
 import InstructorBox from "./InstructorBox";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 
 const InstructorPage = () => {
-    const [instructors, setInstructors] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/instructors')
-            .then(res => res.json())
-            .then(data => setInstructors(data))
-    }, [])
+    // const [users, setUsers] = useState([]);
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/instructors')
+    //         .then(res => res.json())
+    //         .then(data => setInstructors(data))
+    // }, [])
+    const token=localStorage.getItem('token');
+
+    
+    const { data: users = []} = useQuery(['users'], async () => {
+        const res = await fetch('http://localhost:5000/users',{
+            headers:{
+                authorization:`bearer ${token}`
+              }
+        })
+        return res.json()
+    })
+    const instructors=users.filter(item=>item.role==='instructor')
 
     return (
         <Fade direction='right'>

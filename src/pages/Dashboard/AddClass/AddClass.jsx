@@ -93,7 +93,7 @@ const AddClass = () => {
           <label className="label">
             <span className="label-text">Enrolled Students</span>
           </label>
-          <input  type="text" defaultValue={'0'}   {...register("totalEnrolledStudents", { required: true })}  className="input input-bordered w-full" />
+          <input  type="text" defaultValue={0}   {...register("totalEnrolledStudents", { required: true })}  className="input input-bordered w-full" />
         
 
         </div>
