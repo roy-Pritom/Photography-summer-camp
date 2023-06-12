@@ -1,5 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FaHome } from 'react-icons/fa';
+import {  FaHome, FaRegBookmark, FaUserCog, FaUsers, FaUsersCog, FaWallet } from 'react-icons/fa';
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
 
@@ -25,17 +25,17 @@ const Dashboard = () => {
 
           {
             isAdmin && <>
-              <li><NavLink to="/"><FaHome></FaHome> Admin Home</NavLink></li>
-              <li><NavLink to="/dashboard/manageClasses">Manage Classes </NavLink></li>
-              <li><NavLink to="/dashboard/allUser">Manage Users</NavLink></li>
+            
+              <li><NavLink to="/dashboard/allUser"><FaUsers></FaUsers>Manage Users</NavLink></li>
+              <li><NavLink to="/dashboard/manageClasses"><FaUserCog></FaUserCog> Manage Classes </NavLink></li>
             </>
 
 
           }
           {
             isInstructor && <>
-              <li><NavLink to="/dashboard/addClass">Add a Class</NavLink></li>
-              <li><NavLink to="/dashboard/myClasses">My classes</NavLink></li>
+              <li><NavLink to="/dashboard/addClass"><FaRegBookmark></FaRegBookmark> Add a Class</NavLink></li>
+              <li><NavLink to="/dashboard/myClasses"><FaUsers></FaUsers> My classes</NavLink></li>
 
             </>
 
@@ -44,29 +44,13 @@ const Dashboard = () => {
             isAdmin!==true  && isInstructor!==true
             &&
             <>
-            <li><NavLink to="/"><FaHome></FaHome> User Home</NavLink></li>
-            <li><NavLink to="/dashboard/selectedClasses">Selected Classes</NavLink></li>
-            <li><NavLink to="/dashboard/enrolledClasses">Enrolled Classes</NavLink></li>
-            <li><NavLink to="/dashboard/paymentHistory"> Payment History</NavLink></li>
+            
+            <li><NavLink to="/dashboard/selectedClasses"><FaUserCog></FaUserCog>Selected Classes</NavLink></li>
+            <li><NavLink to="/dashboard/enrolledClasses"><FaUsersCog></FaUsersCog> Enrolled Classes</NavLink></li>
+            <li><NavLink to="/dashboard/paymentHistory"><FaWallet></FaWallet> Payment History</NavLink></li>
             </>
 
           }
-
-          {/* {
-            isAdmin ? <>
-              <li><NavLink to="/"><FaHome></FaHome> Admin Home</NavLink></li>
-              <li><NavLink to="/dashboard/mageClasses">Manage Classes </NavLink></li>
-              <li><NavLink to="/dashboard/allUser">Manage Users</NavLink></li>
-
-
-            </> : <>
-              <li><NavLink to="/"><FaHome></FaHome> User Home</NavLink></li>
-              <li><NavLink to="/dashboard/classes">Selected Classes</NavLink></li>
-              <li><NavLink to="/">Enrolled Classes</NavLink></li>
-              <li><NavLink to="/"> Payment History</NavLink></li>
-            </>
-          }
-           */}
 
           <div className="divider"></div>
           <li><NavLink to="/"><FaHome></FaHome>Home</NavLink> </li>

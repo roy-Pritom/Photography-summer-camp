@@ -7,7 +7,7 @@ const PaymentHistory = () => {
 
     const token = localStorage.getItem('token');
     const { data: payments = [] } = useQuery(['users'], async () => {
-        const res = await fetch(`http://localhost:5000/payments/${user?.email}`, {
+        const res = await fetch(`https://assignment-12-server-site-sepia.vercel.app/payments/${user?.email}`, {
             headers: {
                 authorization: `bearer ${token}`
             }

@@ -3,32 +3,38 @@ import { Link } from "react-router-dom";
 import { authContext } from "../../Provider/AuthProvider";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip as ReactTooltip } from "react-tooltip";
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
+
 
 const Header = () => {
-    const[theme,setTheme]=useState(localStorage.getItem('theme')?localStorage.getItem('theme'):'light');
+    const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light');
 
-    useEffect(()=>{
-        localStorage.setItem('theme',theme);
-        const allTheme=localStorage.getItem('theme');
-        document.querySelector('html').setAttribute('data-theme',allTheme);
-    },[theme])
-    const themehandle=n=>{
-        if(n.target.checked){
+    useEffect(() => {
+        localStorage.setItem('theme', theme);
+        const allTheme = localStorage.getItem('theme');
+        document.querySelector('html').setAttribute('data-theme', allTheme);
+    }, [theme])
+    const themehandle = n => {
+        if (n.target.checked) {
             setTheme('dark')
         }
-        else{
+        else {
             setTheme('light')
         }
     }
-    const { user,logOut} = useContext(authContext);
-    const handleLogOut=()=>{
+    const { user, logOut } = useContext(authContext);
+    const handleLogOut = () => {
         logOut()
-        .then(() => {
-            // Sign-out successful.
-          }).catch((error) => {
-            console.log(error.message);
-          });
+            .then(() => {
+                // Sign-out successful.
+            }).catch((error) => {
+                console.log(error.message);
+            });
     }
+
+    const isAdmin = useAdmin();
+    const isInstructor = useInstructor();
     const navItems = <>
         <li>
             <Link to='/'>Home</Link>
@@ -40,14 +46,29 @@ const Header = () => {
             <Link to='/classes'>Classes</Link>
         </li>
         {
+      
             user &&
             <li>
-                <Link to='/dashboard'>Dashboard</Link>
+                {/* <Link to='/dashboard'>Dashboard</Link> */}
+                {
+                    isAdmin && <Link to='/dashboard/allUser'>Dashboard</Link>
+                }
+                
+                {
+                    isInstructor && <Link to='/dashboard/addClass'>Dashboard</Link>
+                }
+                {
+                     isAdmin!==true  && isInstructor!==true &&
+                     <Link to='/dashboard/selectedClasses'>Dashboard</Link>    
+                }
+                
+
+
             </li>
         }
         <li>
-            <input onClick={themehandle}type='checkbox' className="toggle toggle-md text-white"
-            checked={theme==='light' ? false:true}/>
+            <input onClick={themehandle} type='checkbox' className="toggle toggle-md text-white"
+                checked={theme === 'light' ? false : true} />
         </li>
 
     </>
@@ -74,7 +95,7 @@ const Header = () => {
                     user ?
                         <div className="flex items-center gap-3">
                             <img id="title" src={user?.photoURL} className="rounded-full w-12 h-10" alt="" />
-                            <ReactTooltip anchorId="title"place="bottom" content={user?.displayName}></ReactTooltip>
+                            <ReactTooltip anchorId="title" place="bottom" content={user?.displayName}></ReactTooltip>
                             <button onClick={handleLogOut} className="btn btn-active btn-secondary">Logout</button>
                         </div>
                         :

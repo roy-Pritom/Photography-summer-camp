@@ -10,7 +10,7 @@ const SelectedClasses = () => {
     const { user } = useContext(authContext);
     const token = localStorage.getItem('token');
     const { data: classes = [], refetch } = useQuery(['carts', user?.email], async () => {
-        const res = await fetch(`http://localhost:5000/carts?email=${user?.email}`, {
+        const res = await fetch(`https://assignment-12-server-site-sepia.vercel.app/carts?email=${user?.email}`, {
             headers: {
                 authorization: `bearer ${token}`
             }
@@ -32,7 +32,7 @@ const SelectedClasses = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/carts/${id}`, {
+                fetch(`https://assignment-12-server-site-sepia.vercel.app/carts/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -67,7 +67,6 @@ const SelectedClasses = () => {
                             <th>instructorName</th>
                             <th>Price</th>
                             <th>Seats</th>
-                            <th>enrllrd</th>
                             <th>Pay</th>
                             <th>Delete</th>
                         </tr>
@@ -96,7 +95,6 @@ const SelectedClasses = () => {
                                 <td>{item.instructorName}</td>
                                 <td>${item.price}</td>
                                 <td>{item.seats}</td>
-                                <td>{item.totalEnrolledStudents}</td>
 
                                 <td>
 

@@ -3,7 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const About = () => {
     return (
-        <div className='flex md:flex-row flex-col mt-16'>
+        <div className='flex md:flex-row flex-col md:mt-32 mt-16'>
             <div className="md:w-1/2">
                 <Carousel
                     autoPlay={true}
@@ -33,7 +33,7 @@ const About = () => {
                 </Carousel>
             </div>
             <div className="md:w-1/2 ml-5 md:ml-12">
-                <h2 className="text-7xl md:text-8xl font-bold uppercase mb-12">about</h2>
+                <h2 className="text-2xl md:text-6xl font-bold uppercase mb-12">about</h2>
                 <div className="flex md:flex-row flex-col">
                     <div className="md:w-1/2">
                         <h2 className="text-3xl font-bold mb-6">Description</h2>

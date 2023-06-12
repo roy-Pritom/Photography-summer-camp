@@ -17,7 +17,7 @@ const CheckoutForm = ({ data, selectedClasses, id }) => {
 
     useEffect(() => {
         if (price > 0) {
-            axios.post('http://localhost:5000/create-payment-intent', { price }, {
+            axios.post('https://assignment-12-server-site-sepia.vercel.app/create-payment-intent', { price }, {
                 headers: {
                     authorization: `bearer ${token}`
                 }
@@ -96,7 +96,7 @@ const CheckoutForm = ({ data, selectedClasses, id }) => {
 
             }
 
-            axios.post('http://localhost:5000/payments', payment, {
+            axios.post('https://assignment-12-server-site-sepia.vercel.app/payments', payment, {
                 headers: {
                     authorization: `bearer ${token}`
                 }
@@ -119,7 +119,7 @@ const CheckoutForm = ({ data, selectedClasses, id }) => {
     }
 
     return (
-        <div className="w-full">
+        <div className="w-full p-16">
             <form onSubmit={handleSubmit}>
                 <CardElement
                     options={{
@@ -138,9 +138,9 @@ const CheckoutForm = ({ data, selectedClasses, id }) => {
                     }}
                 />
                 <button
-                    disabled={!stripe || !clientSecret || processing}
+                 disabled={!stripe || !clientSecret || processing}
 
-                    className=" btn primary" type="submit" >
+                    className=" btn btn-secondary mt-5" type="submit" >
                     Pay
                 </button>
             </form>

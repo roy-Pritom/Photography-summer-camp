@@ -7,7 +7,7 @@ const AddClass = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = data =>{
    console.log(data);
-  fetch('http://localhost:5000/classes',{
+  fetch('https://assignment-12-server-site-sepia.vercel.app/classes',{
     method:'POST',
     headers:{
         'content-type':'application/json'

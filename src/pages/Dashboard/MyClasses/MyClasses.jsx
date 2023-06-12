@@ -11,7 +11,7 @@ const MyClasses = () => {
   const [classes, setClasses] = useState([]);
   const token = localStorage.getItem('token');
   useEffect(() => {
-    fetch(`http://localhost:5000/classes?email=${user?.email}`, {
+    fetch(`https://assignment-12-server-site-sepia.vercel.app/classes?email=${user?.email}`, {
       headers: {
         authorization: `bearer ${token}`
       }

@@ -16,7 +16,7 @@ const Payment = () => {
     const { user } = useContext(authContext);
     const token = localStorage.getItem('token');
     const { data: classes = [] } = useQuery(['carts', user?.email], async () => {
-        const res = await fetch(`http://localhost:5000/carts?email=${user?.email}`, {
+        const res = await fetch(`https://assignment-12-server-site-sepia.vercel.app/carts?email=${user?.email}`, {
             headers: {
                 authorization: `bearer ${token}`
             }
@@ -29,8 +29,8 @@ const Payment = () => {
 
     return (
         <div className="w-full">
-       
-            <h2>payment taka</h2>
+            <h2 className="text-center font-bold text-5xl mb-28">Payment</h2>
+         
             <Elements stripe={stripePromise}>
             <CheckoutForm data={data} selectedClasses={classes} id={id} ></CheckoutForm>
                 

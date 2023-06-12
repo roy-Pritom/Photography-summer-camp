@@ -6,7 +6,7 @@ const ManageClasses = () => {
 
 
     const { data: classes = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch(`http://localhost:5000/classes/${true}`)
+        const res = await fetch(`https://assignment-12-server-site-sepia.vercel.app/classes/${true}`)
         return res.json()
     })
 
@@ -17,7 +17,7 @@ const ManageClasses = () => {
     const handleStatus = (item, isApprove) => {
         if (isApprove) {
             const info = { approve: true }
-            fetch(`http://localhost:5000/classes/${item._id}`, {
+            fetch(`https://assignment-12-server-site-sepia.vercel.app/classes/${item._id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json'
@@ -44,7 +44,7 @@ const ManageClasses = () => {
         }
         else {
             const info = { approve: false }
-            fetch(`http://localhost:5000/classes/${item._id}`, {
+            fetch(`https://assignment-12-server-site-sepia.vercel.app/classes/${item._id}`, {
                 method: 'PATCH',
                 headers: {
                     'content-type': 'application/json'

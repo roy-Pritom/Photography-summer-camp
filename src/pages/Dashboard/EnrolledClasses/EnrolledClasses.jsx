@@ -6,7 +6,7 @@ const EnrolledClasses = () => {
     const {user}=useContext(authContext);
     const token = localStorage.getItem('token');
     const { data: classes = [] } = useQuery(['users'], async () => {
-        const res = await fetch(`http://localhost:5000/payments/${user?.email}`, {
+        const res = await fetch(`https://assignment-12-server-site-sepia.vercel.app/payments/${user?.email}`, {
             headers: {
                 authorization: `bearer ${token}`
             }
@@ -34,6 +34,7 @@ const EnrolledClasses = () => {
                     </thead>
                     <tbody>
                         {
+                        
                             classes.map((item, index) => <tr key={item._id}>
 
 

@@ -10,7 +10,7 @@ const token=localStorage.getItem('token')
      const {data:isInstructor}=useQuery({
         queryKey:['isInstructor',user?.email],
         queryFn:async()=>{
-            const res= await axios.get(`http://localhost:5000/users/instructor/${user?.email}`,{
+            const res= await axios.get(`https://assignment-12-server-site-sepia.vercel.app/users/instructor/${user?.email}`,{
                 headers:{
                     authorization:`bearer ${token}`
                 }
@@ -22,7 +22,7 @@ const token=localStorage.getItem('token')
 
     //  const [instructor,setInstructor]=useState('');
     //  useEffect(()=>{
-    //     fetch(`http://localhost:5000/users/instructor/${user?.email}`)
+    //     fetch(`https://assignment-12-server-site-sepia.vercel.app/users/instructor/${user?.email}`)
     //     .then(res=>res.json())
     //     .then(data=>setInstructor(data))
     //  },[user?.email])

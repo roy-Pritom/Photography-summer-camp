@@ -10,14 +10,10 @@ const Register = () => {
    const navigate=useNavigate();
     // const [succes,setSuccess]=useState('');
     const [error,setError]=useState('');
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit,watch, formState: { errors } } = useForm();
     const onSubmit = data => {
         setError('');
-        console.log(data);
-        if(data.password!==data.confirmPassword)
-        {
-       return  setError('password doest not match')
-        }
+      
         createUser(data.email,data.password)
         .then(result=>{
             const loggedUser=result.user;
@@ -54,15 +50,6 @@ const Register = () => {
         
     };
 
-    // const updateUserProfile=(currentUser,name,photo)=>{
-    //     updateProfile(currentUser, {
-    //         displayName: name, photoURL:photo
-    //       }).then(() => {
-    //         // Profile updated!
-    //       }).catch((error) => {
-    //         console.log(error.message);
-    //       });
-    // }
 
     return (
         <div className="md:p-10 p-6">
@@ -109,11 +96,11 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Confirm Password</span>
                             </label>
-                            <input type="text" placeholder="confirmPassword"  {...register("confirmPassword", { required: true })} className="input input-bordered" />
+                            <input type="text" placeholder="confirmPassword"  {...register("confirmPassword", { required: true,validate: (value) =>
+                    value === watch("password") || "Passwords do not match.", })} className="input input-bordered" />
                             {errors.confirmPassword?.type === 'required' && <p className="text-red-400">password is required</p>}
                             {errors.confirmPassword?.type === 'required' && <p className="text-red-400"></p>}
-                            {/* To Do */}
-                            {errors.confirmPassword==errors.password && <p className="text-red-400">{error}</p>}
+                      
 
                             
                         </div>
