@@ -22,7 +22,7 @@ const Register = () => {
             .then(()=>{
 
                 const savedUser = { name: data.name, email: data.email,photoUrl:data.photo }
-                fetch('http://localhost:5000/users', {
+                fetch('https://assignment-12-server-site-sepia.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

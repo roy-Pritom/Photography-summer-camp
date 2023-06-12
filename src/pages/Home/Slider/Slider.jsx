@@ -18,7 +18,7 @@ const Slider = () => {
 
                     <div className="">
                         <p className='text-pink-300 text-8xl font-bold'>Capture the Beauty</p>
-                        <p className=' text-pink-300 text-base mt-7'>Lorem ipsum dolor sit amet consectetur  adipisicing elit. Modi sit nam sed velit possimus <br /> esse voluptas, eius fugiat culpa distinctio accusamus amet eum voluptates quo odit quidem <br /> rerum laborum debitis at unde aperiam itaque? Cumque ?</p>
+                        <p className=' text-pink-300 text-base mt-7'>Unleash your creativity with captivating photography. Explore the world through a lens,  diving into <br /> stunning imagery. Elevate your skills by unlocking the secrets of composition, lighting, and editing. </p>
                         <button className='btn  btn-outline  bg-gradient-to-r from-pink-600 to-purple-200 
           text-white mt-5'>Explore Now</button>
                     </div>
@@ -29,7 +29,7 @@ const Slider = () => {
                 <div className="carousel-overlay">
                 <div className="">
                         <p className='text-pink-300 text-8xl font-bold'>Capture the Beauty</p>
-                        <p className=' text-pink-300 text-base mt-7'>Lorem ipsum dolor sit amet consectetur  adipisicing elit. Modi sit nam sed velit possimus <br /> esse voluptas, eius fugiat culpa distinctio accusamus amet eum voluptates quo odit quidem <br /> rerum laborum debitis at unde aperiam itaque? Cumque ?</p>
+                        <p className=' text-pink-300 text-base mt-7'>Unleash your creativity with captivating photography. Explore the world through a lens,  diving into <br /> stunning imagery. Elevate your skills by unlocking the secrets of composition, lighting, and editing.</p>
                         <button className='btn  btn-outline  bg-gradient-to-r from-pink-600 to-purple-200 
           text-white mt-5'>Explore Now</button>
                     </div>
@@ -40,7 +40,7 @@ const Slider = () => {
                 <div className="carousel-overlay">
                 <div className="">
                         <p className='text-pink-300 text-8xl font-bold'>Capture the Beauty</p>
-                        <p className=' text-pink-300 text-base mt-7'>Lorem ipsum dolor sit amet consectetur  adipisicing elit. Modi sit nam sed velit possimus <br /> esse voluptas, eius fugiat culpa distinctio accusamus amet eum voluptates quo odit quidem <br /> rerum laborum debitis at unde aperiam itaque? Cumque ?</p>
+                        <p className=' text-pink-300 text-base mt-7'>Unleash your creativity with captivating photography. Explore the world through a lens,  diving into <br /> stunning imagery. Elevate your skills by unlocking the secrets of composition, lighting, and editing.</p>
                         <button className='btn  btn-outline  bg-gradient-to-r from-pink-600 to-purple-200  text-white mt-5'>Explore Now</button>
                     </div>
                 </div>
@@ -50,7 +50,7 @@ const Slider = () => {
                 <div className="carousel-overlay">
                 <div className="">
                         <p className='text-pink-300 text-8xl font-bold'>Capture the Beauty</p>
-                        <p className=' text-pink-300 text-base mt-7'>Lorem ipsum dolor sit amet consectetur  adipisicing elit. Modi sit nam sed velit possimus <br /> esse voluptas, eius fugiat culpa distinctio accusamus amet eum voluptates quo odit quidem <br /> rerum laborum debitis at unde aperiam itaque? Cumque ?</p>
+                        <p className=' text-pink-300 text-base mt-7'>Unleash your creativity with captivating photography. Explore the world through a lens,  diving into <br /> stunning imagery. Elevate your skills by unlocking the secrets of composition, lighting, and editing.</p>
                         <button className='btn  btn-outline  bg-gradient-to-r from-pink-600 to-purple-200   text-white mt-5'>Explore Now</button>
                     </div>
                 </div>

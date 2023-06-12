@@ -11,7 +11,7 @@ const ClassCard = ({item}) => {
    const {user}=useContext(authContext);
     const isAdmin=useAdmin();
     const isInstructor=useInstructor();
-    const {classImg,instructorName,className,price,seats,totalEnrolledStudents}=item;
+    const {classImg,instructorName,className,price,seats}=item;
     const handleAddToCart=(item)=>{
       console.log(item);
       const orderData={classId:item._id,name:item.className,image:item.classImg,instructorName:item.instructorName,email:user?.email,price:item.price,seats:item.seats,enrolledStudents:item.totalEnrolledStudents}
@@ -72,7 +72,7 @@ const ClassCard = ({item}) => {
       <p className="font-bold">Instructor Name : {instructorName}</p>
       <p className="font-bold">Available Seats : {seats}</p>
       <p className="font-bold">Price : ${price}</p>
-      <p className="font-bold">Price : {totalEnrolledStudents}</p>
+    
       
     </div>
     <div className="px-6 py-4">
