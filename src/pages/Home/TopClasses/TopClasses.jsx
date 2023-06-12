@@ -14,7 +14,7 @@ useEffect(()=>{
 },[token])
     return (
         <div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mx-5 md:mx-0">
                 {
                     classes?.map(item=><TopClassCard
                     key={item._id}

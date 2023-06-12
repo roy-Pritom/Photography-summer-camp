@@ -16,6 +16,7 @@ const AddClass = () => {
   })
   .then(res=>res.json())
   .then(info=>{
+    
     if(info.insertedId)
     {
         Swal.fire({
@@ -32,6 +33,7 @@ const AddClass = () => {
          
 
   const {user}=useContext(authContext);
+ 
     return (
         <div>
             <h2 className="text-center text-4xl font-bold my-8">Add a class</h2>
@@ -97,6 +99,7 @@ const AddClass = () => {
         
 
         </div>
+       
         <div className="form-control">
           <label className="label">
             <span className="label-text">Price</span>

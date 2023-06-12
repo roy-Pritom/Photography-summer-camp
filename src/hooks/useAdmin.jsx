@@ -17,18 +17,7 @@ const useAdmin=()=>{
             return res.data
         }
     })
-
-    // const [isAdmin,setIsAdmin]=useState('')
-    // useEffect(()=>{
-    //     fetch(`http://localhost:5000/users/admin/${user?.email}`)
-    //    .then(res=>res.json())
-    //    .then(data=>{
-        
-    //     setIsAdmin(data)
-        
-    //    })
-    // },[user?.email])
-    // console.log(isAdmin);
+    
     return isAdmin?.admin
 }
 export default useAdmin;

@@ -10,9 +10,9 @@ const Slider = () => {
             showStatus={false}
             showThumbs={false}
             dynamicHeight={false}
-            className='mb-10 '
+            className='mb-10  '
         >
-            <div className="carousel-slide ">
+            <div className="carousel-slide">
                 <img src="https://img.freepik.com/free-photo/camera-photographic-with-smartphone-devices-generative-ai_188544-12171.jpg?w=1380&t=st=1686249434~exp=1686250034~hmac=d91c1cd4fe74e2593777d6c5def84ead43a3b74d616605513618090fafa964bb" alt="Image 1" className='rounded-lg md:h-[700px] h-[300px]' />
                 <div className="carousel-overlay  bg-black opacity-90">
 
